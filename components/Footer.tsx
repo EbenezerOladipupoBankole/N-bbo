@@ -3,38 +3,34 @@ import { Instagram, Twitter, Facebook, Mail, MapPin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white py-12 md:py-16">
+    <footer className="bg-nibbo-green text-white py-12 border-t border-green-800">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12 border-b border-gray-800 pb-12">
-           <div>
-             <div className="flex items-center gap-2 mb-4">
-                <MapPin className="text-nibbo-orange w-6 h-6" />
-                <span className="text-2xl font-bold tracking-tight">NÍBBO</span>
-             </div>
-             <p className="text-gray-400 max-w-sm">
-               Connecting Africa through seamless logistics and everyday errands. 
-               Reliable, fast, and human-centric.
-             </p>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+           <div className="flex items-center gap-2">
+              <div className="bg-white/10 p-2 rounded-full backdrop-blur-sm border border-white/10">
+                <MapPin className="text-nibbo-orange w-5 h-5" />
+              </div>
+              <span className="text-2xl font-bold tracking-tight text-white">NÍBBO</span>
            </div>
            
-           <div className="flex gap-6">
-             <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-nibbo-green transition-colors" aria-label="Instagram">
+           <div className="flex gap-5">
+             <a href="#" className="text-green-100 hover:text-nibbo-orange transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10" aria-label="Instagram">
                <Instagram className="w-5 h-5" />
              </a>
-             <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-nibbo-green transition-colors" aria-label="Twitter">
+             <a href="#" className="text-green-100 hover:text-nibbo-orange transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10" aria-label="Twitter">
                <Twitter className="w-5 h-5" />
              </a>
-             <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-nibbo-green transition-colors" aria-label="Facebook">
+             <a href="#" className="text-green-100 hover:text-nibbo-orange transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10" aria-label="Facebook">
                <Facebook className="w-5 h-5" />
              </a>
-             <a href="mailto:hello@nibbo.africa" className="p-2 bg-gray-800 rounded-full hover:bg-nibbo-green transition-colors" aria-label="Email">
+             <a href="mailto:hello@nibbo.africa" className="text-green-100 hover:text-nibbo-orange transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10" aria-label="Email">
                <Mail className="w-5 h-5" />
              </a>
            </div>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
-          <p>&copy; {new Date().getFullYear()} Níbbo Logistics. All rights reserved.</p>
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 border-t border-white/10 pt-8 text-green-100/80">
+          <p>&copy; {new Date().getFullYear()} Níbbo Logistics. Abeokuta, Nigeria.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>

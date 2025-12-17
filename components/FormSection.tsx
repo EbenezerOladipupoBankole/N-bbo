@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RoleType, CustomerFormData, RiderFormData, VendorFormData, SERVICES_LIST, VEHICLE_TYPES, VENDOR_CATEGORIES } from '../types';
+import { RoleType, CustomerFormData, RiderFormData, VendorFormData, SERVICES_LIST, VEHICLE_TYPES, VENDOR_CATEGORIES, ABEOKUTA_LOCATIONS } from '../types';
 import Input from './ui/Input';
 import { Loader2, CheckCircle2 } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -46,6 +46,25 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
       };
     });
   };
+
+  const renderCitySelect = (
+    value: string, 
+    onChange: (val: string) => void,
+    label: string = "Location in Abeokuta"
+  ) => (
+    <div className="flex flex-col gap-1.5">
+      <label className="text-sm font-semibold text-gray-700">{label}</label>
+      <select 
+        className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-nibbo-green/20 focus:border-nibbo-green"
+        required
+        value={value}
+        onChange={e => onChange(e.target.value)}
+      >
+        <option value="">Select your area...</option>
+        {ABEOKUTA_LOCATIONS.map(loc => <option key={loc} value={loc}>{loc}</option>)}
+      </select>
+    </div>
+  );
 
   if (isSuccess) {
     return (
@@ -101,13 +120,7 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
                   value={customerData.fullName}
                   onChange={e => setCustomerData({...customerData, fullName: e.target.value})}
                 />
-                <Input 
-                  label="City" 
-                  placeholder="e.g. Lagos, Ikeja"
-                  required 
-                  value={customerData.city}
-                  onChange={e => setCustomerData({...customerData, city: e.target.value})}
-                />
+                {renderCitySelect(customerData.city, (val) => setCustomerData({...customerData, city: val}))}
               </div>
               
               <Input 
@@ -160,13 +173,7 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
                   value={riderData.fullName}
                   onChange={e => setRiderData({...riderData, fullName: e.target.value})}
                 />
-                <Input 
-                  label="City" 
-                  placeholder="e.g. Abuja"
-                  required 
-                  value={riderData.city}
-                  onChange={e => setRiderData({...riderData, city: e.target.value})}
-                />
+                {renderCitySelect(riderData.city, (val) => setRiderData({...riderData, city: val}))}
               </div>
 
               <Input 
@@ -257,13 +264,7 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
                     value={vendorData.email}
                     onChange={e => setVendorData({...vendorData, email: e.target.value})}
                 />
-                 <Input 
-                  label="City" 
-                  placeholder="e.g. Port Harcourt"
-                  required 
-                  value={vendorData.city}
-                  onChange={e => setVendorData({...vendorData, city: e.target.value})}
-                />
+                 {renderCitySelect(vendorData.city, (val) => setVendorData({...vendorData, city: val}))}
                </div>
 
               <div className="flex flex-col gap-1.5">

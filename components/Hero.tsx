@@ -19,7 +19,7 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
           <div className="flex-1 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nibbo-light border border-nibbo-green/20 text-nibbo-green text-sm font-semibold mb-6 animate-fade-in-up">
               <span className="w-2 h-2 rounded-full bg-nibbo-orange animate-pulse"></span>
-              Launching Soon in Lagos
+              Launching Soon in Abeokuta
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-nibbo-green leading-[1.1] mb-6">
@@ -71,9 +71,9 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
           <div className="flex-1 w-full max-w-md lg:max-w-full relative">
             <div className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden bg-gray-100 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 ease-out">
                <img 
-                 src="https://picsum.photos/800/800?grayscale" 
+                 src="https://images.unsplash.com/photo-1616401784845-180886ba9ca2?auto=format&fit=crop&q=80&w=800" 
                  alt="African Logistics Abstract" 
-                 className="w-full h-full object-cover opacity-80 mix-blend-overlay"
+                 className="w-full h-full object-cover opacity-90"
                />
                <div className="absolute inset-0 bg-gradient-to-tr from-nibbo-green/80 to-transparent mix-blend-multiply"></div>
                <div className="absolute bottom-0 left-0 p-8 text-white">

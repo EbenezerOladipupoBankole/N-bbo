@@ -50,3 +50,22 @@ export const VENDOR_CATEGORIES = [
   "Electronics / Tech",
   "Other"
 ];
+
+export const ABEOKUTA_LOCATIONS = [
+  "Adatan",
+  "Asero",
+  "Camp / Osiele",
+  "Elega",
+  "Ibara / GRA",
+  "Idi Aba",
+  "Kuto",
+  "Lafenwa",
+  "Obantoko",
+  "Oke-Ilewo",
+  "Oke-Mosan",
+  "Olomore",
+  "Onikolobo",
+  "Panseke",
+  "Sapon",
+  "Other"
+];

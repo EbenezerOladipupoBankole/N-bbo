@@ -16,7 +16,6 @@ const Navbar: React.FC = () => {
         </div>
         
         <div className="hidden md:flex items-center gap-6">
-            <a href="#role-selection" className="text-gray-600 hover:text-nibbo-green font-medium transition-colors">How it works</a>
             <a href="#role-selection" className="bg-nibbo-green text-white px-5 py-2.5 rounded-full font-semibold hover:bg-green-800 transition-colors shadow-lg shadow-green-900/20">
               Join Waitlist
             </a>
