@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import RoleCards from './components/RoleCards';
@@ -6,36 +6,44 @@ import FormSection from './components/FormSection';
 import Footer from './components/Footer';
 import { RoleType } from './types';
 import { Toaster } from 'react-hot-toast';
+import { X, ArrowLeft } from 'lucide-react';
 
 const App: React.FC = () => {
   const [selectedRole, setSelectedRole] = useState<RoleType>(null);
-  const formRef = useRef<HTMLDivElement>(null);
 
   const handleRoleSelect = (role: RoleType) => {
     setSelectedRole(role);
-    // Smooth scroll to form section after a short delay to allow UI to update
-    setTimeout(() => {
-      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
   };
 
+  const closeModal = () => setSelectedRole(null);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedRole) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [selectedRole]);
+
   return (
-    <div className="min-h-screen bg-white text-gray-900 flex flex-col">
+    <div className="app-container">
       <Navbar />
       
-      <main className="flex-grow">
+      <main className="app-main">
         <Hero onCtaClick={() => {
            const roleSection = document.getElementById('role-selection');
            roleSection?.scrollIntoView({ behavior: 'smooth' });
         }} />
         
-        <div id="role-selection" className="py-16 md:py-24 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-nibbo-green mb-4">
+        <div id="role-selection" className="role-section">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">
                 Choose Your Path
               </h2>
-              <p className="text-gray-600 text-lg">
+              <p className="section-desc">
                 Whether you want to send, earn, or sell, Níbbo has a place for you. Select your role to get started.
               </p>
             </div>
@@ -44,11 +52,20 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <div ref={formRef}>
-          {selectedRole && (
-            <FormSection role={selectedRole} />
-          )}
-        </div>
+        {/* Modal Overlay */}
+        {selectedRole && (
+          <div className="modal-overlay" onClick={closeModal}>
+            <div className="modal-container" onClick={e => e.stopPropagation()}>
+              <button className="modal-back-btn" onClick={closeModal}>
+                <ArrowLeft size={24} color="#374151" />
+              </button>
+              <button className="modal-close-btn" onClick={closeModal}>
+                <X size={24} color="#374151" />
+              </button>
+              <FormSection role={selectedRole} />
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />

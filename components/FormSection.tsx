@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import { RoleType, CustomerFormData, RiderFormData, VendorFormData, SERVICES_LIST, VEHICLE_TYPES, VENDOR_CATEGORIES, ABEOKUTA_LOCATIONS } from '../types';
-import Input from './ui/Input';
 import { Loader2, CheckCircle2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface FormSectionProps {
   role: RoleType;
 }
+
+// Local Input component using standard CSS
+const Input = ({ label, optional, className, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { label: string; optional?: boolean }) => (
+  <div className="form-group">
+    <label className="form-label">
+      {label} {optional && <span style={{ color: '#9ca3af', fontWeight: 'normal', fontSize: '0.8em' }}>(Optional)</span>}
+    </label>
+    <input className={`form-input ${className || ''}`} {...props} />
+  </div>
+);
 
 const FormSection: React.FC<FormSectionProps> = ({ role }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,14 +34,46 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate phone number
+    const currentPhone = role === 'customer' ? customerData.phone : role === 'rider' ? riderData.phone : vendorData.phone;
+    const cleanPhone = currentPhone.replace(/[\s-()]/g, '');
+    
+    if (!/^\+?\d{10,15}$/.test(cleanPhone)) {
+      toast.error("Please enter a valid phone number (e.g. 080... or +234...)");
+      return;
+    }
+
     setIsSubmitting(true);
+
+    // Prepare data based on selected role
+    let formData = { role };
+    if (role === 'customer') formData = { ...formData, ...customerData };
+    if (role === 'rider') formData = { ...formData, ...riderData };
+    if (role === 'vendor') formData = { ...formData, ...vendorData };
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    toast.success("Welcome to Níbbo! We'll be in touch.");
+    try {
+      // TODO: Replace 'YOUR_FORM_ID' with your actual Formspree Form ID
+      const response = await fetch("https://formspree.io/f/xeejqqne", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        toast.success("Welcome to Níbbo! We'll be in touch.");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Failed to submit. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCheckboxChange = (service: string) => {
@@ -52,10 +93,10 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
     onChange: (val: string) => void,
     label: string = "Location in Abeokuta"
   ) => (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-semibold text-gray-700">{label}</label>
+    <div className="form-group">
+      <label className="form-label">{label}</label>
       <select 
-        className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-nibbo-green/20 focus:border-nibbo-green"
+        className="form-select"
         required
         value={value}
         onChange={e => onChange(e.target.value)}
@@ -68,24 +109,24 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
 
   if (isSuccess) {
     return (
-      <div className="py-12 bg-white">
-        <div className="container mx-auto px-4 max-w-lg">
-          <div className="bg-green-50 border border-green-100 rounded-3xl p-8 md:p-12 text-center">
-            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle2 className="w-8 h-8" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">You're on the list!</h3>
-            <p className="text-gray-600 mb-6">
-              Thank you for joining Níbbo. We have received your details.
-            </p>
-            <div className="bg-white p-4 rounded-xl border border-green-100 shadow-sm inline-block">
-                <p className="text-green-800 font-medium text-sm">
-                   Look out for a WhatsApp message from us soon to confirm your spot!
-                </p>
-            </div>
+      <div className="success-container">
+        <div className="success-card">
+          <div className="success-icon-wrapper">
+            <CheckCircle2 size={32} />
+          </div>
+          <h3 className="success-title">You're on the list!</h3>
+          <p className="success-desc">
+            Thank you for joining Níbbo. We have received your details.
+          </p>
+          <div className="success-info-box">
+              <p className="success-info-text">
+                 Look out for a WhatsApp message from us soon to confirm your spot!
+              </p>
+          </div>
+          <div>
             <button 
               onClick={() => setIsSuccess(false)}
-              className="mt-8 text-gray-500 hover:text-nibbo-green text-sm font-medium underline"
+              className="success-reset-btn"
             >
               Register another user
             </button>
@@ -96,23 +137,23 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
   }
 
   return (
-    <section className="py-12 md:py-20 bg-white">
-      <div className="container mx-auto px-4 max-w-2xl">
-        <div className="mb-10 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2 capitalize">
+    <section className="form-section">
+      <div className="container form-container">
+        <div className="form-header">
+            <h2 className="section-title">
               Join as a {role}
             </h2>
-            <p className="text-gray-500">
+            <p className="section-desc">
               Fill out the form below. It takes less than a minute.
             </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="form-grid">
           
           {/* CUSTOMER FORM */}
           {role === 'customer' && (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="form-grid form-grid-2">
                 <Input 
                   label="Full Name" 
                   placeholder="e.g. Femi Adebayo"
@@ -142,19 +183,19 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
               />
 
               <div className="pt-2">
-                <label className="text-sm font-semibold text-gray-700 block mb-3">
+                <label className="form-label" style={{ display: 'block', marginBottom: '0.75rem' }}>
                   What services are you interested in?
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="form-grid form-grid-2">
                   {SERVICES_LIST.map(service => (
-                    <label key={service} className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                    <label key={service} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', border: '1px solid #e5e7eb', borderRadius: '0.5rem', cursor: 'pointer' }}>
                       <input 
                         type="checkbox" 
-                        className="w-5 h-5 text-nibbo-green rounded border-gray-300 focus:ring-nibbo-green"
+                        style={{ width: '1.25rem', height: '1.25rem' }}
                         checked={customerData.services.includes(service)}
                         onChange={() => handleCheckboxChange(service)}
                       />
-                      <span className="text-sm text-gray-700">{service}</span>
+                      <span style={{ fontSize: '0.875rem', color: '#374151' }}>{service}</span>
                     </label>
                   ))}
                 </div>
@@ -165,7 +206,7 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
           {/* RIDER FORM */}
           {role === 'rider' && (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="form-grid form-grid-2">
                 <Input 
                   label="Full Name" 
                   placeholder="e.g. Musa Ibrahim"
@@ -194,11 +235,11 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
                 onChange={e => setRiderData({...riderData, email: e.target.value})}
               />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-gray-700">Vehicle Type</label>
+              <div className="form-grid form-grid-2">
+                <div className="form-group">
+                  <label className="form-label">Vehicle Type</label>
                   <select 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-nibbo-green/20 focus:border-nibbo-green"
+                    className="form-select"
                     required
                     value={riderData.vehicleType}
                     onChange={e => setRiderData({...riderData, vehicleType: e.target.value})}
@@ -208,10 +249,10 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
                   </select>
                 </div>
                 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-gray-700">Availability</label>
+                <div className="form-group">
+                  <label className="form-label">Availability</label>
                   <select 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-nibbo-green/20 focus:border-nibbo-green"
+                    className="form-select"
                     required
                     value={riderData.availability}
                     onChange={e => setRiderData({...riderData, availability: e.target.value})}
@@ -229,7 +270,7 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
           {/* VENDOR FORM */}
           {role === 'vendor' && (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="form-grid form-grid-2">
                 <Input 
                   label="Business Name" 
                   placeholder="e.g. Mama T's Kitchen"
@@ -255,7 +296,7 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
                 onChange={e => setVendorData({...vendorData, phone: e.target.value})}
               />
 
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <div className="form-grid form-grid-2">
                 <Input 
                     label="Email Address" 
                     type="email" 
@@ -267,10 +308,10 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
                  {renderCitySelect(vendorData.city, (val) => setVendorData({...vendorData, city: val}))}
                </div>
 
-              <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-gray-700">Business Category</label>
+              <div className="form-group">
+                  <label className="form-label">Business Category</label>
                   <select 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-gray-900 focus:outline-none focus:ring-2 focus:ring-nibbo-green/20 focus:border-nibbo-green"
+                    className="form-select"
                     required
                     value={vendorData.category}
                     onChange={e => setVendorData({...vendorData, category: e.target.value})}
@@ -287,18 +328,18 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-nibbo-green text-white font-bold text-lg py-4 rounded-full shadow-lg shadow-green-900/10 hover:bg-green-800 hover:shadow-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="btn btn-primary" style={{ width: '100%' }}
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="spin" size={20} />
                   Processing...
                 </>
               ) : (
                 `Join Waitlist as ${role === 'customer' ? 'Customer' : role === 'rider' ? 'Rider' : 'Vendor'}`
               )}
             </button>
-            <p className="text-center text-xs text-gray-400 mt-4">
+            <p style={{ textAlign: 'center', fontSize: '0.75rem', color: '#9ca3af', marginTop: '1rem' }}>
                 By joining, you agree to receive WhatsApp communications from Níbbo. 
                 <br/>Your data is secure and will never be shared.
             </p>

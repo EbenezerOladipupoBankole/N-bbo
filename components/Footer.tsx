@@ -3,38 +3,71 @@ import { Instagram, Twitter, Facebook, Mail, MapPin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-nibbo-green text-white py-12 border-t border-green-800">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
-           <div className="flex items-center gap-2">
-              <div className="bg-white/10 p-2 rounded-full backdrop-blur-sm border border-white/10">
-                <MapPin className="text-nibbo-orange w-5 h-5" />
-              </div>
-              <span className="text-2xl font-bold tracking-tight text-white">NÍBBO</span>
-           </div>
-           
-           <div className="flex gap-5">
-             <a href="#" className="text-green-100 hover:text-nibbo-orange transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10" aria-label="Instagram">
-               <Instagram className="w-5 h-5" />
-             </a>
-             <a href="#" className="text-green-100 hover:text-nibbo-orange transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10" aria-label="Twitter">
-               <Twitter className="w-5 h-5" />
-             </a>
-             <a href="#" className="text-green-100 hover:text-nibbo-orange transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10" aria-label="Facebook">
-               <Facebook className="w-5 h-5" />
-             </a>
-             <a href="mailto:hello@nibbo.africa" className="text-green-100 hover:text-nibbo-orange transition-colors bg-white/5 p-2 rounded-full hover:bg-white/10" aria-label="Email">
-               <Mail className="w-5 h-5" />
-             </a>
-           </div>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          {/* Brand Column */}
+          <div className="footer-brand">
+             <div className="navbar-logo">
+                <div className="navbar-logo-icon-wrapper" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+                  <MapPin className="text-nibbo-orange" size={20} />
+                </div>
+                <span className="navbar-logo-text" style={{ color: 'white' }}>NÍBBO</span>
+             </div>
+             <p className="footer-desc">
+               Your trusted partner for errands, logistics, and shopping in Abeokuta. Fast, reliable, and secure.
+             </p>
+             <div className="footer-socials">
+               <a href="#" className="footer-social-link" aria-label="Instagram">
+                 <Instagram size={20} />
+               </a>
+               <a href="#" className="footer-social-link" aria-label="Twitter">
+                 <Twitter size={20} />
+               </a>
+               <a href="#" className="footer-social-link" aria-label="Facebook">
+                 <Facebook size={20} />
+               </a>
+             </div>
+          </div>
+
+          {/* Links Columns */}
+          <div className="footer-col">
+            <h4 className="footer-heading">Company</h4>
+            <ul className="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#role-selection">Join Waitlist</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4 className="footer-heading">Legal</h4>
+            <ul className="footer-links">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+              <li><a href="#">Dispute Resolution</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4 className="footer-heading">Contact</h4>
+            <ul className="footer-links">
+              <li className="footer-contact-item">
+                <Mail size={18} style={{ color: 'var(--nibbo-orange)' }} />
+                <a href="mailto:hello@nibbo.africa">hello@nibbo.africa</a>
+              </li>
+              <li className="footer-contact-item">
+                <MapPin size={18} style={{ color: 'var(--nibbo-orange)' }} />
+                <span>Abeokuta, Ogun State</span>
+              </li>
+            </ul>
+          </div>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm gap-4 border-t border-white/10 pt-8 text-green-100/80">
-          <p>&copy; {new Date().getFullYear()} Níbbo Logistics. Abeokuta, Nigeria.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          </div>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} Níbbo Logistics. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -1,57 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Níbbo | Where Reliability Meets Speed</title>
     <meta name="description" content="Níbbo handles errands, shopping, deliveries, logistics, and tech purchases. Join the waitlist today." />
     
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            },
-            colors: {
-              nibbo: {
-                green: '#064e3b', // Deep Green
-                orange: '#f97316', // Orange
-                lemon: '#a3e635', // Lemon Green
-                light: '#f0fdf4', // Very light green background
-              }
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        scroll-behavior: smooth;
-      }
-      /* Custom scrollbar for webkit */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #064e3b; 
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #04392b; 
-      }
-    </style>
   <script type="importmap">
 {
   "imports": {
@@ -66,5 +26,6 @@
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/main.tsx"></script>
   </body>
 </html>
