@@ -60,7 +60,7 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
           <div className="hero-image-wrapper">
             <div className="hero-image-card">
                <img 
-                 src="../assets/images/image.png" 
+                 src="../assets/images/hero.png" 
                  alt="Fast Delivery Service" 
                  className="hero-image"
                />
