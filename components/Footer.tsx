@@ -1,5 +1,6 @@
 import React from 'react';
 import { Instagram, Twitter, Facebook, Mail, MapPin } from 'lucide-react';
+import './Footer.css';
 
 const Footer: React.FC = () => {
   return (
@@ -9,10 +10,10 @@ const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="footer-brand">
              <div className="navbar-logo">
-                <div className="navbar-logo-icon-wrapper" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+                <div className="navbar-logo-icon-wrapper">
                   <MapPin className="text-nibbo-orange" size={20} />
                 </div>
-                <span className="navbar-logo-text" style={{ color: 'white' }}>NÍBBO</span>
+                <span className="navbar-logo-text">NÍBBO</span>
              </div>
              <p className="footer-desc">
                Your trusted partner for errands, logistics, and shopping in Abeokuta. Fast, reliable, and secure.
@@ -35,11 +36,11 @@ const Footer: React.FC = () => {
             <h4 className="footer-heading">Contact</h4>
             <ul className="footer-links">
               <li className="footer-contact-item">
-                <Mail size={18} style={{ color: 'var(--nibbo-orange)' }} />
+                <Mail size={18} className="icon" />
                 <a href="mailto:hello@nibbo.africa">nibbodeliv@gmail.com</a>
               </li>
               <li className="footer-contact-item">
-                <MapPin size={18} style={{ color: 'var(--nibbo-orange)' }} />
+                <MapPin size={18} className="icon" />
                 <span>Abeokuta, Ogun State</span>
               </li>
             </ul>
