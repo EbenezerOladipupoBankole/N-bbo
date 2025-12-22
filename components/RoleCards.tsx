@@ -5,7 +5,7 @@ import './RoleCards.css';
 
 // Import your local image here (adjust filename as needed)
 import customerImage from '../assets/images/customerr.png';
-import riderImage from '../assets/images/rider.png';
+import riderImage from '../assets/images/riders.png';
 import vendorImage from '../assets/images/vendor.png';
 
 interface RoleCardsProps {
