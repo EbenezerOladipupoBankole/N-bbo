@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Twitter, Facebook, Mail, MapPin } from 'lucide-react';
+import { Instagram, Facebook, Mail, MapPin, Video } from 'lucide-react';
 import './Footer.css';
 
 const Footer: React.FC = () => {
@@ -19,11 +19,11 @@ const Footer: React.FC = () => {
                Your trusted partner for errands, logistics, and shopping in Abeokuta. Fast, reliable, and secure.
              </p>
              <div className="footer-socials">
-               <a href="#" className="footer-social-link" aria-label="Instagram">
+               <a href="https://www.instagram.com/segunol3?igsh=NzFjYWRicnBmZ3M=" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Instagram">
                  <Instagram size={20} />
                </a>
-               <a href="#" className="footer-social-link" aria-label="Twitter">
-                 <Twitter size={20} />
+               <a href="https://www.tiktok.com/@user1108361723041?_r=1&_t=ZS-92QAOwIOs4O" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="TikTok">
+                 <Video size={20} />
                </a>
                <a href="#" className="footer-social-link" aria-label="Facebook">
                  <Facebook size={20} />
