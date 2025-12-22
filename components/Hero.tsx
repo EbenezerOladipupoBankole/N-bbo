@@ -43,20 +43,21 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
               </button>
             </div>
 
-            <div className="hero-features">
-                <div className="flex items-center gap-2">
-                    <ShoppingBag className="w-5 h-5 text-nibbo-orange" />
-                    <span className="text-sm font-medium">Shopping</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Truck className="w-5 h-5 text-nibbo-orange" />
-                    <span className="text-sm font-medium">Logistics</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-nibbo-orange" />
-                    <span className="text-sm font-medium">Errands</span>
-                </div>
-            </div>
+            {/* Features section commented out for pre-launch */}
+            {/* <div className="hero-features">
+              <div className="flex items-center gap-2">
+                  <ShoppingBag className="w-5 h-5 text-nibbo-orange" />
+                  <span className="text-sm font-medium">Shopping</span>
+              </div>
+              <div className="flex items-center gap-2">
+                  <Truck className="w-5 h-5 text-nibbo-orange" />
+                  <span className="text-sm font-medium">Logistics</span>
+              </div>
+              <div className="flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-nibbo-orange" />
+                  <span className="text-sm font-medium">Errands</span>
+              </div>
+            </div> */}
           </div>
 
           {/* Abstract Visual / Image Placeholder */}
