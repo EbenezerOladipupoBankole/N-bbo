@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight, ShoppingBag, Truck, Zap } from 'lucide-react';
 import './Hero.css';
+// Import the image so the build tool can process it
+import heroImage from '../assets/images/hero.png';
 
 interface HeroProps {
   onCtaClick: () => void;
@@ -61,7 +63,7 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
           <div className="hero-image-wrapper">
             <div className="hero-image-card">
                <img 
-                 src="../assets/images/hero.png" 
+                 src={heroImage}
                  alt="Fast Delivery Service" 
                  className="hero-image"
                />
