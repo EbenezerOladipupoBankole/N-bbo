@@ -1,0 +1,139 @@
+/* General section styling */
+.hero-section {
+  width: 100%;
+  padding: 140px 0 80px 0; /* Top padding to clear the tall navbar */
+  background: linear-gradient(to bottom, #fff7ed, #ffffff);
+  overflow-x: hidden; /* Prevent any horizontal scrollbars */
+  box-sizing: border-box;
+}
+
+/* 
+  This is the core of the fix for the "boxed" layout.
+  - On mobile, it's full-width with padding.
+  - On desktop, a media query adds a max-width to center it.
+*/
+.hero-section .container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem; /* Padding for mobile content */
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .hero-section .container {
+    max-width: 1200px; /* Centered container on desktop */
+  }
+}
+
+/* Responsive layout for the hero's text and image */
+.hero-layout {
+  display: flex;
+  flex-direction: column; /* Stacks text and image on mobile */
+  align-items: center;
+  gap: 3rem;
+}
+
+@media (min-width: 992px) {
+  .hero-layout {
+    flex-direction: row; /* Side-by-side on desktop */
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.hero-text-content {
+  max-width: 580px;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .hero-text-content {
+    text-align: left;
+  }
+}
+
+/* --- Typography and Element Styling --- */
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fff7ed;
+  color: #ea580c;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(234, 88, 12, 0.1);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.hero-title span {
+  color: #ea580c;
+}
+
+.hero-desc {
+  font-size: 1.125rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.hero-actions .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #111827;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 2rem;
+}
+
+.hero-actions .btn-primary:hover {
+  background-color: #374151;
+}
+
+.hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+@media (min-width: 992px) {
+  .hero-features {
+    justify-content: flex-start;
+  }
+}
+
+/* --- Image Styling --- */
+.hero-image-wrapper {
+  width: 100%;
+  max-width: 450px;
+}
+
+.hero-image-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  transform: rotate(3deg);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}

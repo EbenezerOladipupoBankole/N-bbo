@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ShoppingBag, Truck, Zap } from 'lucide-react';
+import './Hero.css';
 
 interface HeroProps {
   onCtaClick: () => void;

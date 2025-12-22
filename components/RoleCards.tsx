@@ -46,7 +46,8 @@ const RoleCards: React.FC<RoleCardsProps> = ({ selectedRole, onSelect }) => {
       background: 'linear-gradient(to bottom, #fff7ed, #ffffff)',
       paddingTop: '120px', // Increased padding to better clear the taller navbar
       minHeight: '100vh',
-      overflowX: 'hidden' // Prevents horizontal scrolling
+      overflowX: 'hidden', // Prevents horizontal scrolling
+      boxSizing: 'border-box' // Ensures padding is included in minHeight calculation
     }}>
       <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 1.5rem auto', padding: '0 1rem' }}>
         <h1 style={{ 

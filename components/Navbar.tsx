@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="container navbar-content">
+      <div className="navbar-content">
         <div className="navbar-logo">
           <img 
             src={logo} 
