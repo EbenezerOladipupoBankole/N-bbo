@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Menu, X } from 'lucide-react';
-import logo from '../assets/images/customer.png';
+import logo from '../assets/images/logo.png';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {

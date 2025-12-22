@@ -4,7 +4,7 @@ import { RoleType } from '../types';
 import './RoleCards.css';
 
 // Import your local image here (adjust filename as needed)
-import customerImage from '../assets/images/customerr.png';
+import customerImage from '../assets/images/customers.png';
 import riderImage from '../assets/images/riders.png';
 import vendorImage from '../assets/images/vendor.png';
 
