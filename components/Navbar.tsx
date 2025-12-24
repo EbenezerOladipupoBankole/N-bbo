@@ -22,13 +22,32 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <style>{`
+        @media (max-width: 768px) {
+          .navbar-actions {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 2rem 0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+          }
+          .navbar-actions.is-open {
+            display: flex !important;
+            justify-content: center;
+          }
+        }
+      `}</style>
       <div className="navbar-content">
         <div className="navbar-logo" style={{ background: 'transparent' }}>
           <img 
             src={logo} 
             alt="Níbbo Logo" 
             className="navbar-logo-img"
-            style={{ height: '90px', width: 'auto' }}
+            style={{ height: '90px', width: 'auto', mixBlendMode: 'multiply' }}
           />
         </div>
         
