@@ -87,6 +87,8 @@ const RoleCards: React.FC<RoleCardsProps> = ({ selectedRole, onSelect }) => {
                 src={role.imageUrl} 
                 alt={role.title} 
                 className="role-card-img"
+                loading="lazy"
+                decoding="async"
               />
               
               {/* Icon floating on image */}

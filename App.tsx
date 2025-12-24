@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import RoleCards from './components/RoleCards';
-import FormSection from './components/FormSection';
 import CountdownTimer from './components/CountdownTimer';
 import Footer from './components/Footer';
 import { RoleType } from './types';
 import { Toaster } from 'react-hot-toast';
 import { X, ArrowLeft } from 'lucide-react';
+
+// Lazy load the form component to reduce initial bundle size
+const FormSection = React.lazy(() => import('./components/FormSection'));
 
 const App: React.FC = () => {
   const [selectedRole, setSelectedRole] = useState<RoleType>(null);
@@ -76,7 +78,9 @@ const App: React.FC = () => {
               <button className="modal-close-btn" onClick={closeModal}>
                 <X size={24} color="#374151" />
               </button>
-              <FormSection role={selectedRole} />
+              <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
+                <FormSection role={selectedRole} />
+              </Suspense>
             </div>
           </div>
         )}
