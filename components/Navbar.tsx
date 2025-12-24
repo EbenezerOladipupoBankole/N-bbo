@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Menu, X } from 'lucide-react';
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/image.png';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
@@ -23,11 +23,12 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-content">
-        <div className="navbar-logo">
+        <div className="navbar-logo" style={{ background: 'transparent' }}>
           <img 
             src={logo} 
             alt="Níbbo Logo" 
             className="navbar-logo-img"
+            style={{ height: '90px', width: 'auto' }}
           />
         </div>
         
@@ -39,8 +40,9 @@ const Navbar: React.FC = () => {
                 rel="noopener noreferrer"
                 className="navbar-location" 
                 title="View on Map"
+                style={{ fontSize: '1.2rem' }}
               >
-               <MapPin size={18} className="navbar-location-icon" />
+               <MapPin size={28} className="navbar-location-icon" />
                <span>Abeokuta</span>
               </a>
             </div>

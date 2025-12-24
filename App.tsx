@@ -28,7 +28,19 @@ const App: React.FC = () => {
   }, [selectedRole]);
 
   return (
-    <div className="app-container">
+    <div className="app-container" style={{ overflowX: 'hidden', width: '100%' }}>
+      <style>{`
+        body {
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+        body::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
       <Navbar />
       
       <main className="app-main">

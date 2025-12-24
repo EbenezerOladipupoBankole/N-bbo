@@ -4,7 +4,7 @@ import { RoleType } from '../types';
 import './RoleCards.css';
 
 // Import your local image here (adjust filename as needed)
-import customerImage from '../assets/images/customers.png';
+import customerImage from '../assets/images/image copy 2.png';
 import riderImage from '../assets/images/riders.png';
 import vendorImage from '../assets/images/vendor.png';
 
@@ -105,13 +105,6 @@ const RoleCards: React.FC<RoleCardsProps> = ({ selectedRole, onSelect }) => {
         );
       })}
       </div>
-
-      <button 
-        className="get-started-btn"
-        disabled={!selectedRole}
-      >
-        Get Started
-      </button>
     </div>
   );
 };
