@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import RoleCards from './components/RoleCards';
 import FormSection from './components/FormSection';
+import CountdownTimer from './components/CountdownTimer';
 import Footer from './components/Footer';
 import { RoleType } from './types';
 import { Toaster } from 'react-hot-toast';
@@ -41,6 +42,7 @@ const App: React.FC = () => {
           display: none;
         }
       `}</style>
+      <CountdownTimer />
       <Navbar />
       
       <main className="app-main">

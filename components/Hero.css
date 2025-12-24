@@ -1,7 +1,7 @@
 /* General section styling */
 .hero-section {
   width: 100%;
-  padding: 140px 0 80px 0; /* Top padding to clear the tall navbar */
+  padding: 40px 0 80px 0;
   background: linear-gradient(to bottom, #fff7ed, #ffffff);
   overflow-x: hidden; /* Prevent any horizontal scrollbars */
   box-sizing: border-box;
