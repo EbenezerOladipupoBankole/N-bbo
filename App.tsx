@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import { RoleType } from './types';
 import { Toaster } from 'react-hot-toast';
 import { X, ArrowLeft } from 'lucide-react';
+import logo from './assets/images/logo.webp';
 
 // Lazy load the form component to reduce initial bundle size
 const FormSection = React.lazy(() => import('./components/FormSection'));
@@ -29,6 +30,19 @@ const App: React.FC = () => {
     }
     return () => { document.body.style.overflow = 'unset'; };
   }, [selectedRole]);
+
+  // Update favicon to match logo
+  useEffect(() => {
+    const link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+    if (link) {
+      link.href = logo;
+    } else {
+      const newLink = document.createElement('link');
+      newLink.rel = 'icon';
+      newLink.href = logo;
+      document.head.appendChild(newLink);
+    }
+  }, []);
 
   return (
     <div className="app-container" style={{ overflowX: 'hidden', width: '100%' }}>

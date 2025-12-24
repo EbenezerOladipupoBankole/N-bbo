@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, ShoppingBag, Truck, Zap } from 'lucide-react';
 import './Hero.css';
 // Import the image so the build tool can process it
-import heroImage from '../assets/images/hero.png';
+import heroImage from '../assets/images/hero.webp';
 
 interface HeroProps {
   onCtaClick: () => void;

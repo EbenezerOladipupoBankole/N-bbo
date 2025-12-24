@@ -4,9 +4,9 @@ import { RoleType } from '../types';
 import './RoleCards.css';
 
 // Import your local image here (adjust filename as needed)
-import customerImage from '../assets/images/image copy 2.png';
-import riderImage from '../assets/images/riders.png';
-import vendorImage from '../assets/images/vendor.png';
+import customerImage from '../assets/images/customers.webp';
+import riderImage from '../assets/images/riders.webp';
+import vendorImage from '../assets/images/vendor.webp';
 
 interface RoleCardsProps {
   selectedRole: RoleType;
@@ -17,7 +17,7 @@ const roles = [
   {
     id: 'customer' as RoleType,
     title: 'Customer',
-    desc: 'I want to send packages, run errands, or buy tech.',
+    desc: 'Send packages, book personal shoppers, or order food and tech in Abeokuta. Fast, reliable errands and logistics at your fingertips.',
     icon: <User className="w-6 h-6" />,
     color: 'bg-blue-100 text-blue-600',
     imageUrl: customerImage
@@ -25,7 +25,7 @@ const roles = [
   {
     id: 'rider' as RoleType,
     title: 'Rider',
-    desc: 'I own a bike or vehicle and want to earn money.',
+    desc: 'Turn your bike, car, or vehicle into an income source. Join the Níbbo fleet in Abeokuta and earn money delivering packages and errands.',
     icon: <Bike className="w-6 h-6" />,
     color: 'bg-orange-100 text-nibbo-orange',
     imageUrl: riderImage
@@ -33,7 +33,7 @@ const roles = [
   {
     id: 'vendor' as RoleType,
     title: 'Vendor',
-    desc: 'I want to sell products or food on the platform.',
+    desc: 'Expand your business reach. Sell food, groceries, or products to thousands of customers across Abeokuta with our seamless logistics network.',
     icon: <Store className="w-6 h-6" />,
     color: 'bg-green-100 text-green-700',
     imageUrl: vendorImage
@@ -66,7 +66,7 @@ const RoleCards: React.FC<RoleCardsProps> = ({ selectedRole, onSelect }) => {
           maxWidth: '600px', 
           margin: '0 auto' 
         }}>
-          The super app for everyone. Send packages, earn money, or sell products.
+          The ultimate super app for Abeokuta. Whether you need swift package delivery, want to earn as a rider, or grow your business as a vendor, Níbbo connects you to what matters.
         </p>
       </div>
 

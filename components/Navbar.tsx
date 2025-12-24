@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Menu, X } from 'lucide-react';
-import logo from '../assets/images/image.png';
+import logo from '../assets/images/logo.webp';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
             src={logo} 
             alt="Níbbo Logo" 
             className="navbar-logo-img"
-            style={{ height: '90px', width: 'auto', mixBlendMode: 'multiply' }}
+            style={{ height: '200px', width: 'auto', mixBlendMode: 'multiply' }}
           />
         </div>
         
