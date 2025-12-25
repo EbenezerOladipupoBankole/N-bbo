@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RoleType, CustomerFormData, RiderFormData, VendorFormData, SERVICES_LIST, VEHICLE_TYPES, VENDOR_CATEGORIES, ABEOKUTA_LOCATIONS } from '../types';
-import { Loader2, CheckCircle2 } from 'lucide-react';
+import { Loader2, CheckCircle2, MessageCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface FormSectionProps {
@@ -107,6 +107,12 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
     </div>
   );
 
+  const whatsappLinks = {
+    customer: "https://chat.whatsapp.com/JSIL98Y397gLxGaybkovGG",
+    rider: "https://chat.whatsapp.com/ExYRvxpBL4v4J2KsDjsyFR",
+    vendor: "https://chat.whatsapp.com/Dj9CNLO16IjENg0vSEVwoT"
+  };
+
   if (isSuccess) {
     return (
       <div className="success-container">
@@ -123,6 +129,31 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
                  Look out for a WhatsApp message from us soon to confirm your spot!
               </p>
           </div>
+
+          <a 
+            href={whatsappLinks[role]}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              width: '100%',
+              padding: '12px',
+              backgroundColor: '#25D366',
+              color: 'white',
+              borderRadius: '8px',
+              fontWeight: 600,
+              marginBottom: '12px',
+              textDecoration: 'none',
+              marginTop: '16px'
+            }}
+          >
+            <MessageCircle size={20} />
+            Join {role.charAt(0).toUpperCase() + role.slice(1)} WhatsApp Channel
+          </a>
+
           <div>
             <button 
               onClick={() => setIsSuccess(false)}
