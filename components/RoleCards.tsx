@@ -100,8 +100,8 @@ const RoleCards: React.FC<RoleCardsProps> = ({ selectedRole, onSelect }) => {
             
             {/* Content Section */}
             <div className="role-card-content">
-              <h3 className="role-card-title">{role.title}</h3>
-              <p className="role-card-desc">{role.desc}</p>
+              <h3 className="role-card-title" style={{ fontFamily: 'sans-serif' }}>{role.title}</h3>
+              <p className="role-card-desc" style={{ fontFamily: 'sans-serif' }}>{role.desc}</p>
             </div>
           </button>
         );
