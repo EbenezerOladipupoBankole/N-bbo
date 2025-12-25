@@ -107,7 +107,7 @@ const FormSection: React.FC<FormSectionProps> = ({ role }) => {
     </div>
   );
 
-  const whatsappLinks = {
+  const whatsappLinks: Record<RoleType, string> = {
     customer: "https://chat.whatsapp.com/JSIL98Y397gLxGaybkovGG",
     rider: "https://chat.whatsapp.com/ExYRvxpBL4v4J2KsDjsyFR",
     vendor: "https://chat.whatsapp.com/Dj9CNLO16IjENg0vSEVwoT"
